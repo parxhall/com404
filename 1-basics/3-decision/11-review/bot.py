@@ -13,12 +13,17 @@ if direction == "left":
         print("You didn't decide fast enough")
 #else if statement
 elif direction == "right":
-    print("Good choice, we're getting away!")
+    speed = input("How fast are you running\n")
+    if speed == "fast" or "speedy":
+        print("Good choice, we're getting away!")
+    elif speed == "not fast" or "slow":
+        print("The monster is gaining on us!")
 #else statment
 else:
     print("You didn't decide fast enough")
+
 #multiple conditions with logical if or statement
-if (action == "jump") or (direction == "right"):
+if direction == "right":
     print("Well done! We made it out alive!")
 #else if and or statemant
 elif (direction == "left") and (action != "jump" or "go round"):
