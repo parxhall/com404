@@ -1,9 +1,9 @@
 #ask the activity
-book = input("Please enter the activity to be performed.")
+book = input("Please enter the activity to be performed.\n")
 #if statement
 if book == "calculate":
-    print("Performing calculations...")
+    print("Performing calculations...\n")
 else:
-    print("Performing activity...")
+    print("Performing activity...\n")
 
 print("Activity completed!")
