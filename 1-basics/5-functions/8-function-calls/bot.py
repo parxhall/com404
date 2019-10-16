@@ -24,6 +24,9 @@ def enterWord():
         counter += 5
         print("You've selected option", counter)
         repeat(word)
+    else:
+        print("What you talking bout willis")
+    print("Thank you for playing with Bot and Beep")
 
 def displayInBox(word):
     print("*" * (len(word) + 4))
@@ -44,8 +47,8 @@ def displayMirror(word):
     print(phrase)
 
 def repeat(word):
-    times = int(input("How many times should I repeat"))
+    times = int(input("How many times should I repeat?\n"))
     for count in range (times):
-        print(word)
+        print(word.upper(),word.lower())
 
 enterWord()
