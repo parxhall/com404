@@ -7,7 +7,7 @@ class Gui(Tk):
         super().__init__()
         
         # set window attributes
-        self.title("Tickets")
+        self.title("Songs")
         
         # add components
         self.__add_heading_label()
@@ -53,7 +53,7 @@ class Gui(Tk):
         self.entry_button.configure(text="Add")
 
         #event
-        self.entry_button.bind("<ButtonRelease-1>", self.__buy_button_clicked) 
+        self.entry_button.bind("<ButtonRelease-1>", self.__song_button_clicked) 
 
 
     def __add_song_entry(self):
@@ -78,11 +78,5 @@ class Gui(Tk):
         self.listbox.configure(height=2)
 
 
-    def __buy_button_clicked(self, event):
-        num = int(self.ticket_entry.get())
-        if num == 1:
-            messagebox.showinfo("Purchased!", "You have purchased "+ str(num) + " ticket!")
-        elif num > 1:
-            messagebox.showinfo("Purchased!", "You have purchased "+ str(num) + " tickets!")
-        else:
-            messagebox.showinfo("You have entered an invalid number of tickets!")
+    def __song_button_clicked(self, event):
+        self.listbox.insert(END, self.song_entry.get())
