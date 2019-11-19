@@ -47,7 +47,8 @@ class Gui(Tk):
         self.first_check.grid(row=3, column=0, columnspan=1)
 
         #stlye
-        self.first_check.configure(text="Yes")
+        self.q1_yes = IntVar()
+        self.first_check.configure(text="Yes", variable=self.q1_yes)
     
 
     def __add_second_check(self):
@@ -74,7 +75,8 @@ class Gui(Tk):
         self.first2_check.grid(row=5, column=0, columnspan=1)
 
         #stlye
-        self.first2_check.configure(text="Yes")
+        self.q2_yes = IntVar()
+        self.first2_check.configure(text="Yes", variable=self.q2_yes)
     
 
     def __add_second2_check(self):
@@ -101,7 +103,8 @@ class Gui(Tk):
         self.first3_check.grid(row=7, column=0, columnspan=1)
 
         #stlye
-        self.first3_check.configure(text="Yes")
+        self.q3_yes = IntVar()
+        self.first3_check.configure(text="Yes", variable=self.q3_yes)
     
 
     def __add_second3_check(self):
@@ -119,7 +122,11 @@ class Gui(Tk):
 
         #style
         self.check_button.configure(text="Check")
-
+        self.check_button.bind("<ButtonRelease-1>", self.__check_button_clicked)
 
     
-        
+    def __check_button_clicked(self,event):
+        if self.q1_yes.get() == 1 and self.q2_yes.get() == 1 and self.q3_yes.get() == 1:
+            messagebox.showinfo("Passed","passed")
+        else:
+            messagebox.showerror("failed", "failed")
