@@ -129,4 +129,4 @@ class Gui(Tk):
         if self.q1_yes.get() == 1 and self.q2_yes.get() == 1 and self.q3_yes.get() == 1:
             messagebox.showinfo("Passed","passed")
         else:
-            messagebox.showerror("failed", "failed")
+            messagebox.showerror("failed", "failed")l
