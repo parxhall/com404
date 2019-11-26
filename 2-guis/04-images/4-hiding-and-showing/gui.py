@@ -5,19 +5,21 @@ class Gui(Tk):
     def __init__(self):
         super().__init__()
         
-        # load resources
-        self.ambulance_image = PhotoImage(file="//filestore.soton.ac.uk/users/ph2r19/mydocuments/University Work/5) Programming/com404/2-guis/04-images/1-loading/ambulance.gif")
-        self.bike_image = PhotoImage(file="//filestore.soton.ac.uk/users/ph2r19/mydocuments/University Work/5) Programming/com404/2-guis/04-images/1-loading/bike.gif")
-        self.plane_image = PhotoImage(file="//filestore.soton.ac.uk/users/ph2r19/mydocuments/University Work/5) Programming/com404/2-guis/04-images/1-loading/plane.gif")
-        
         # set window attributes
         self.title("Gui")
         
         # add components
-        self.add_ambulance_image_label()
-        self.add_bike_image_label()
-        self.add_plane_image_label()
         self.add_main_label()
+        self.add_name_label()
+        self.add_name_entry()
+        self.add_name_check()
+        self.add_pass_label()
+        self.add_pass_entry()
+        self.add_pass_check()
+        self.add_night_label()
+        self.add_night_entry()
+        self.add_night_check()
+        self.add_check_button()
 
     def add_main_label(self):
         #create
@@ -25,30 +27,100 @@ class Gui(Tk):
         self.main_label.grid(row=0, columnspan=3)
 
         #style
-        self.main_label.configure(font="arial 13", text="TRANSPORT")
-        
-    def add_ambulance_image_label(self):
-        #create
-        self.ambulance_image_label = Label()
-        self.ambulance_image_label.grid(row=1, column=0)
-        
-        #style
-        self.ambulance_image_label.configure(image=self.ambulance_image,
-                                             height=60,
-                                             width=60)
+        self.main_label.configure(font="arial 13", text="Hotel Check In")
 
-    def add_bike_image_label(self):
+    def add_name_label(self):
         #create
-        self.ambulance_image_label = Label()
-        self.ambulance_image_label.grid(row=1, column=1)
-        
+        self.name_label = Label()
+        self.name_label.grid(row=1, column=1)
+
         #style
-        self.ambulance_image_label.configure(image=self.bike_image,height=60,width=60)
- 
-    def add_plane_image_label(self):
+        self.name_label.configure(font="arial 8", text="Name:")
+
+    def add_name_entry(self):
         #create
-        self.ambulance_image_label = Label()
-        self.ambulance_image_label.grid(row=1, column=2)
-        
+        self.name_entry = Entry()
+        self.name_entry.grid(row=1, column=2)
+
+        #event
+        self.name_entry.bind("<FocusOut>", self.__name_box)
+
+    def add_name_check(self):
+        #create
+        self.name_check = Checkbutton()
+        self.name_check.grid(row=1, column=3)
+
+    def add_pass_label(self):
+        #create
+        self.pass_label = Label()
+        self.pass_label.grid(row=2, column=1)
+
         #style
-        self.ambulance_image_label.configure(image=self.plane_image,height=60,width=60)
+        self.pass_label.configure(font="arial 8", text="Passport Number:")
+
+    def add_pass_entry(self):
+        #create
+        self.pass_entry = Entry()
+        self.pass_entry.grid(row=2, column=2)
+
+        #event
+        self.pass_entry.bind("<FocusOut>", self.__pass_box)
+
+    def add_pass_check(self):
+        #create
+        self.pass_check = Checkbutton()
+        self.pass_check.grid(row=2, column=3)
+
+    def add_night_label(self):
+        #create
+        self.night_label = Label()
+        self.night_label.grid(row=3, column=1)
+
+        #style
+        self.night_label.configure(font="arial 8", text="No of Nights:")
+
+    def add_night_entry(self):
+        #create
+        self.night_entry = Entry()
+        self.night_entry.grid(row=3, column=2)
+
+        #event
+        self.night_entry.bind("<FocusOut>", self.__check_box)
+
+    def add_night_check(self):
+        #create
+        self.night_check = Checkbutton()
+        self.night_check.grid(row=3, column=3)
+
+    def add_check_button(self):
+        #create
+        self.check_button = Button()
+        self.check_button.grid(row=4, columnspan=3)
+
+        #style
+        self.check_button.configure(text="Check In")
+
+    def __name_box(self,event):
+        name = (self.name_entry.get())
+        if name == "":
+            self.name_check.deselect()
+            messagebox.showinfo("failed","please input some text")
+        else:
+            self.name_check.select()
+
+    def __pass_box(self,event):
+        name = (self.pass_entry.get())
+        if name == "" :
+            self.pass_check.deselect()
+            messagebox.showerror("failed","please input some text")
+        else:
+            self.pass_check.select()
+
+
+    def __check_box(self,event):
+        num = int(self.night_entry.get())
+        if num < 10:
+            self.night_check.select()
+        else:
+            self.night_check.deselect()
+            messagebox.showerror("failed","please select less nights")
